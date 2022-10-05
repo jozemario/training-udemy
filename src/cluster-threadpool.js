@@ -1,9 +1,10 @@
-process.env.UV_THREADPOOL_SIZE = 5;
+process.env.UV_THREADPOOL_SIZE = 1;
 const cluster = require('cluster');
 const crypto = require('crypto');
 console.log(cluster.isMaster);
 
 if (cluster.isMaster) {
+    cluster.fork();
     cluster.fork();
     console.log('Master Mode');
 } else {
